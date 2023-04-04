@@ -53,14 +53,34 @@ function render(){
 
             let del_button = document.createElement("Button");
             del_button.id = todo.id;
-            del_button.className = "del_but";
-            del_button.innerText= "Delete";
+            del_button.className = "button";
+            del_button.innerText= "Done";
             del_button.onclick = del_func;
 
+            let task_details = document.createElement("div");
+            task_details.className = "task-details";
+
+            let task_title = document.createElement("p");
+            task_title.className = "task-title";
+            task_title.innerHTML = title;
+
+            let date_time= document.createElement("p");
+            date_time.className = "date-time";
+            date_time.innerHTML = date+"<br>"+time;
+
+            task_details.appendChild(task_title);
+            task_details.appendChild(date_time);
+            
+            let but_cont = document.createElement("div");
+            but_cont.className = "button-container";
+            but_cont.appendChild(del_button);
+
             let Task = document.createElement("div");
-            Task.className = "task";
-            Task.innerHTML = title + " || "  + date+ " || "+time;
-            Task.appendChild(del_button);
+            Task.className = "task-container";
+            Task.appendChild(task_details);
+            Task.appendChild(but_cont);
+            //Task.innerHTML = title + " || "  + date+ " || "+time;
+            //Task.appendChild(del_button);
             
             document.getElementById("todo-list").appendChild(Task)
         }
@@ -83,3 +103,12 @@ function del_func(event){
     removeTodo(del_id);
     render();
 }
+
+
+function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+  
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }
